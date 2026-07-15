@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+:root {
+  --color-paper: #FAF9F5;
+  --color-paper-dim: #F1EFE6;
+  --color-ink: #0A1128;
+  --color-ink-soft: #16204A;
+  --color-blue: #0000FF;
+  --color-blue-deep: #000099;
+  --color-yellow: #FFEF00;
+  --color-yellow-deep: #C9BE00;
+  --color-slate: #4A5165;
+  --color-line: #D8D4C4;
+}
+
+@theme inline {
+  --color-paper: var(--color-paper);
+  --color-paper-dim: var(--color-paper-dim);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-blue: var(--color-blue);
+  --color-blue-deep: var(--color-blue-deep);
+  --color-yellow: var(--color-yellow);
+  --color-yellow-deep: var(--color-yellow-deep);
+  --color-slate: var(--color-slate);
+  --color-line: var(--color-line);
+  --font-display: var(--font-newsreader);
+  --font-sans: var(--font-ibm-plex);
+  --font-mono: var(--font-ibm-plex-mono);
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+.blueprint-grid {
+  background-image:
+    linear-gradient(var(--color-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.blueprint-grid-dark {
+  background-image:
+    linear-gradient(rgba(255,239,0,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,239,0,0.08) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+::selection {
+  background: var(--color-yellow);
+  color: var(--color-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
