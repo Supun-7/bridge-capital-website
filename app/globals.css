@@ -27,6 +27,7 @@
   --font-display: var(--font-newsreader);
   --font-sans: var(--font-ibm-plex);
   --font-mono: var(--font-ibm-plex-mono);
+  --font-brand: var(--font-brand);
 }
 
 body {

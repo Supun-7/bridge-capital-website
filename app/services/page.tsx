@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Reveal from "@/components/Reveal";
+import { StaggerGroup, StaggerItem } from "@/components/Stagger";
 
 const groups = [
   {
@@ -65,16 +67,18 @@ export default function Services() {
     <>
       <section className="border-b border-line blueprint-grid">
         <div className="mx-auto max-w-6xl px-6 pt-20 pb-16 md:pt-28 md:pb-20">
-          <p className="font-mono text-xs uppercase tracking-[0.25em] text-blue">Services</p>
-          <h1 className="mt-6 max-w-3xl font-display text-4xl leading-[1.1] text-balance text-ink md:text-6xl">
-            Everything between a business plan and a signed term sheet.
-          </h1>
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate md:text-lg">
-            Our services span three stages of a financing engagement. Most
-            clients move through all three; some join partway through with
-            work already done. Either way, you have one advisor across the
-            whole process.
-          </p>
+          <Reveal>
+            <p className="font-mono text-xs uppercase tracking-[0.25em] text-blue">Services</p>
+            <h1 className="mt-6 max-w-3xl font-display text-4xl leading-[1.1] text-balance text-ink md:text-6xl">
+              Everything between a business plan and a signed term sheet.
+            </h1>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate md:text-lg">
+              Our services span three stages of a financing engagement. Most
+              clients move through all three; some join partway through with
+              work already done. Either way, you have one advisor across the
+              whole process.
+            </p>
+          </Reveal>
         </div>
       </section>
 
@@ -86,7 +90,7 @@ export default function Services() {
           }`}
         >
           <div className="grid gap-10 md:grid-cols-12">
-            <div className="md:col-span-4">
+            <Reveal className="md:col-span-4">
               <span className="font-display text-5xl italic text-yellow-deep">
                 {group.label}
               </span>
@@ -94,32 +98,35 @@ export default function Services() {
                 {group.title}
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-slate">{group.intro}</p>
-            </div>
+            </Reveal>
 
-            <div className="grid gap-6 sm:grid-cols-2 md:col-span-8 md:grid-cols-3">
+            <StaggerGroup className="grid gap-6 sm:grid-cols-2 md:col-span-8 md:grid-cols-3">
               {group.items.map((item) => (
-                <div key={item.title} className="border-t border-ink pt-4">
+                <StaggerItem
+                  key={item.title}
+                  className="border-t border-ink pt-4 transition-transform duration-300 hover:-translate-y-1"
+                >
                   <h3 className="font-display text-lg text-ink">{item.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-slate">{item.body}</p>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerGroup>
           </div>
         </section>
       ))}
 
       <section className="border-t border-line bg-ink">
-        <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 px-6 py-16 text-paper md:flex-row md:items-center md:justify-between">
+        <Reveal className="mx-auto flex max-w-6xl flex-col items-start gap-6 px-6 py-16 text-paper md:flex-row md:items-center md:justify-between">
           <h2 className="max-w-xl font-display text-3xl italic md:text-4xl">
             Not sure which stage your business is at?
           </h2>
           <Link
             href="/contact"
-            className="whitespace-nowrap border border-yellow bg-yellow px-6 py-3.5 font-mono text-xs uppercase tracking-[0.15em] text-ink transition-colors hover:bg-transparent hover:text-yellow"
+            className="inline-block whitespace-nowrap border border-yellow bg-yellow px-6 py-3.5 font-mono text-xs uppercase tracking-[0.15em] text-ink transition-all duration-200 hover:-translate-y-0.5 hover:bg-transparent hover:text-yellow hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
           >
             Book a consultation call
           </Link>
-        </div>
+        </Reveal>
       </section>
     </>
   );

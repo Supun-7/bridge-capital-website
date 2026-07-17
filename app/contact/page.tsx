@@ -1,10 +1,11 @@
+import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
 
 export default function Contact() {
   return (
     <section className="border-b border-line blueprint-grid">
       <div className="mx-auto grid max-w-6xl gap-14 px-6 py-20 md:grid-cols-12 md:py-28">
-        <div className="md:col-span-5">
+        <Reveal className="md:col-span-5">
           <p className="font-mono text-xs uppercase tracking-[0.25em] text-blue">Contact</p>
           <h1 className="mt-6 font-display text-4xl leading-[1.1] text-balance text-ink md:text-5xl">
             Tell us where your business stands.
@@ -29,11 +30,11 @@ export default function Contact() {
               <p className="mt-1 text-ink">Monday–Friday, 9:00–18:00</p>
             </div>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="md:col-span-7">
+        <Reveal delay={0.1} className="md:col-span-7">
           <ContactForm />
-        </div>
+        </Reveal>
       </div>
     </section>
   );

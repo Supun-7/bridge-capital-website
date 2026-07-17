@@ -1,15 +1,27 @@
 import Link from "next/link";
+import Image from "next/image";
 import BridgeMotif from "./BridgeMotif";
 
 export default function Footer() {
   return (
     <footer className="border-t border-line bg-ink text-paper">
       <div className="mx-auto max-w-6xl px-6 pt-16 pb-8">
-        <BridgeMotif className="h-16 w-full opacity-60" strokeColor="#FFEF00" />
+        <BridgeMotif className="h-16 w-full opacity-60" strokeColor="#FFEF00" animate />
 
         <div className="mt-10 grid gap-10 md:grid-cols-4">
           <div className="md:col-span-2">
-            <span className="font-display text-2xl italic text-paper">Bridge Capital</span>
+            <div className="flex items-center gap-3">
+              <Image
+                src="/logo.png"
+                alt="Bridge Capital"
+                width={48}
+                height={48}
+                className="h-11 w-11"
+              />
+              <span className="font-brand text-lg tracking-wide text-paper">
+                BRIDGE <span className="text">CAPITAL</span>
+              </span>
+            </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-paper/60">
               We build the profile, the pitch, and the relationships businesses
               need to secure financing — then stay at the table until terms

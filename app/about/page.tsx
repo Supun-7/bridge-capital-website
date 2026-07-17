@@ -1,5 +1,7 @@
 import Link from "next/link";
 import BridgeMotif from "@/components/BridgeMotif";
+import Reveal from "@/components/Reveal";
+import { StaggerGroup, StaggerItem } from "@/components/Stagger";
 
 const principles = [
   {
@@ -25,30 +27,32 @@ export default function About() {
     <>
       <section className="border-b border-line blueprint-grid">
         <div className="mx-auto max-w-6xl px-6 pt-20 pb-16 md:pt-28 md:pb-20">
-          <p className="font-mono text-xs uppercase tracking-[0.25em] text-blue">About Bridge Capital</p>
-          <h1 className="mt-6 max-w-3xl font-display text-4xl leading-[1.1] text-balance text-ink md:text-6xl">
-            Every business with a real plan deserves a fair hearing from
-            capital.
-          </h1>
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate md:text-lg">
-            Bridge Capital exists to close the gap between businesses that
-            need financing and the institutions that provide it. We&apos;re the
-            structural support in between — doing the preparation,
-            translation, and negotiation most business owners don&apos;t have the
-            time or specialist knowledge to do alone.
-          </p>
+          <Reveal>
+            <p className="font-mono text-xs uppercase tracking-[0.25em] text-blue">About Bridge Capital</p>
+            <h1 className="mt-6 max-w-3xl font-display text-4xl leading-[1.1] text-balance text-ink md:text-6xl">
+              Every business with a real plan deserves a fair hearing from
+              capital.
+            </h1>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate md:text-lg">
+              Bridge Capital exists to close the gap between businesses that
+              need financing and the institutions that provide it. We&apos;re the
+              structural support in between — doing the preparation,
+              translation, and negotiation most business owners don&apos;t have the
+              time or specialist knowledge to do alone.
+            </p>
+          </Reveal>
         </div>
       </section>
 
       <section className="mx-auto max-w-6xl px-6 py-20 md:py-28">
         <div className="grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-5">
+          <Reveal className="md:col-span-5">
             <p className="font-mono text-xs uppercase tracking-[0.25em] text-blue">Why &quot;Bridge&quot;</p>
             <h2 className="mt-4 font-display text-3xl italic text-ink md:text-4xl">
               Two sides. One structure.
             </h2>
-          </div>
-          <div className="md:col-span-7">
+          </Reveal>
+          <Reveal delay={0.1} className="md:col-span-7">
             <p className="text-slate leading-relaxed">
               A business with a strong plan and a bank with capital to deploy
               rarely speak the same language on the first attempt. One side
@@ -63,41 +67,45 @@ export default function About() {
               advisory relationship that carries a financing request from
               first conversation to signed terms.
             </p>
-          </div>
+          </Reveal>
         </div>
       </section>
 
-      <BridgeMotif className="h-24 w-full border-y border-line bg-ink" strokeColor="#FFEF00" />
+      <BridgeMotif className="h-24 w-full border-y border-line bg-ink" strokeColor="#FFEF00" animate />
 
       <section className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-        <p className="font-mono text-xs uppercase tracking-[0.25em] text-blue">How we operate</p>
-        <h2 className="mt-4 max-w-2xl font-display text-3xl italic text-ink md:text-4xl">
-          Principles that shape every engagement.
-        </h2>
+        <Reveal>
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-blue">How we operate</p>
+          <h2 className="mt-4 max-w-2xl font-display text-3xl italic text-ink md:text-4xl">
+            Principles that shape every engagement.
+          </h2>
+        </Reveal>
 
-        <div className="mt-14 grid gap-x-8 gap-y-12 md:grid-cols-2">
+        <StaggerGroup className="mt-14 grid gap-x-8 gap-y-12 md:grid-cols-2">
           {principles.map((p) => (
-            <div key={p.title} className="border-t border-line pt-6">
+            <StaggerItem
+              key={p.title}
+              className="border-t border-line pt-6 transition-colors duration-300 hover:border-blue"
+            >
               <h3 className="font-display text-xl text-ink">{p.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-slate">{p.body}</p>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGroup>
       </section>
 
       <section className="border-t border-line bg-yellow">
-        <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 px-6 py-16 md:flex-row md:items-center md:justify-between">
+        <Reveal className="mx-auto flex max-w-6xl flex-col items-start gap-6 px-6 py-16 md:flex-row md:items-center md:justify-between">
           <h2 className="max-w-xl font-display text-3xl italic text-ink md:text-4xl">
             Ready to see what a properly structured proposal looks like?
-          
           </h2>
           <Link
             href="/contact"
-            className="whitespace-nowrap border border-ink bg-ink px-6 py-3.5 font-mono text-xs uppercase tracking-[0.15em] text-paper transition-colors hover:bg-blue hover:border-blue"
+            className="inline-block whitespace-nowrap border border-ink bg-ink px-6 py-3.5 font-mono text-xs uppercase tracking-[0.15em] text-paper transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue hover:border-blue hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2"
           >
             Book a consultation call
           </Link>
-        </div>
+        </Reveal>
       </section>
     </>
   );
