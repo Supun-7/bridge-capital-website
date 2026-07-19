@@ -19,7 +19,7 @@ export default function Contact() {
           <div className="mt-12 space-y-6 border-t border-line pt-8">
             <div>
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-yellow-deep">Email</p>
-              <p className="mt-1 text-ink">[EMAIL_ADDRESS]</p>
+              <p className="mt-1 text-ink">team.bridgecapital@gmail.com</p>
             </div>
             <div>
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-yellow-deep">Hours</p>

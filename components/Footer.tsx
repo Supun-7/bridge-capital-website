@@ -45,7 +45,7 @@ export default function Footer() {
               Contact
             </p>
             <ul className="mt-4 space-y-2 text-sm text-paper/70">
-              <li>hello@bridgecapital.com</li>
+              <li>team.bridgecapital@gmail.com</li>
               <li>Mon–Fri, 9:00–18:00</li>
             </ul>
           </div>
