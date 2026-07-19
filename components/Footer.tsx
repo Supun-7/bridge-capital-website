@@ -19,7 +19,7 @@ export default function Footer() {
                 className="h-11 w-11"
               />
               <span className="font-brand text-lg tracking-wide text-paper">
-                BRIDGE <span className="text">CAPITAL</span>
+                BRIDGE <span className="text-yellow">CAPITAL</span>
               </span>
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-paper/60">
@@ -45,9 +45,7 @@ export default function Footer() {
               Contact
             </p>
             <ul className="mt-4 space-y-2 text-sm text-paper/70">
-              <li>team.bridgecapital@gmail.com</li>
-              <li>+94 </li>
-
+              <li>hello@bridgecapital.com</li>
               <li>Mon–Fri, 9:00–18:00</li>
             </ul>
           </div>

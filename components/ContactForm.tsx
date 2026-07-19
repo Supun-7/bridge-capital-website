@@ -11,20 +11,47 @@ const financingOptions = [
   "Other",
 ];
 
-type Status = "idle" | "submitting" | "submitted";
+type Status = "idle" | "submitting" | "submitted" | "error";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // NOTE: This form is not yet wired to a backend or email service.
-    // Connect it to your provider of choice (e.g. an API route, Resend,
-    // Formspree) before going live. The short "submitting" delay below is
-    // a placeholder so the UI has something real to transition through —
-    // swap it for your actual request/await.
     setStatus("submitting");
-    setTimeout(() => setStatus("submitted"), 700);
+
+    const formData = new FormData(e.currentTarget);
+    const payload = {
+      name: formData.get("name"),
+      business: formData.get("business"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      financing: formData.get("financing"),
+      message: formData.get("message"),
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Failed to send.");
+      }
+
+      setStatus("submitted");
+    } catch (err) {
+      setErrorMessage(
+        err instanceof Error
+          ? err.message
+          : "Something went wrong. Please try again or email us directly."
+      );
+      setStatus("error");
+    }
   }
 
   return (
@@ -67,6 +94,17 @@ export default function ContactForm() {
           transition={{ duration: 0.25 }}
           className="space-y-6"
         >
+          {status === "error" && (
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="border border-red-600 bg-red-50 px-4 py-3 text-sm text-red-700"
+              role="alert"
+            >
+              {errorMessage}
+            </motion.div>
+          )}
+
           <div className="grid gap-6 sm:grid-cols-2">
             <Field label="Full name" htmlFor="name">
               <input id="name" name="name" type="text" required className={inputClass} />
